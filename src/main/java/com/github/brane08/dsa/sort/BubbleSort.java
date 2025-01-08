@@ -1,12 +1,22 @@
 package com.github.brane08.dsa.sort;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BubbleSort implements Sortable {
 
+    private final List<Long> times = new ArrayList<>();
+
     @Override
-    public void sort(List<Integer> toSort) {
+    public List<Long> getTimes() {
+        return times;
+    }
+
+    @Override
+    public List<Integer> sort(List<Integer> unsorted) {
+        List<Integer> toSort = new ArrayList<>(unsorted);
         int size = toSort.size();
+        long before = System.nanoTime();
         for (int i = size - 1; i >= 0; i--) {
             boolean swapped = false;
             for (int j = 0; j < i; j++) {
@@ -21,5 +31,7 @@ public class BubbleSort implements Sortable {
                 break;
             }
         }
+        times.add(System.nanoTime() - before);
+        return toSort;
     }
 }

@@ -3,7 +3,6 @@ package com.github.brane08.dsa.sort;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Queue;
 
@@ -22,9 +21,10 @@ class SortableTest {
         Sortable sorter = new InsertionSort();
         int index = 1;
         for (List<Integer> integers : toSort) {
-            sorter.sort(integers);
-            System.out.printf("Index: %02d, Sorted: %s\n", index++, integers.toString());
+            List<Integer> sorted = sorter.sort(integers);
+//            System.out.printf("Index: %02d, Sorted: %s\n", index++, sorted.toString());
         }
+        sorter.printStats();
     }
 
     @Test
@@ -33,9 +33,10 @@ class SortableTest {
         Sortable sorter = new SelectionSort();
         int index = 1;
         for (List<Integer> integers : toSort) {
-            sorter.sort(integers);
-            System.out.printf("Index: %02d, Sorted: %s\n", index++, integers.toString());
+            List<Integer> sorted = sorter.sort(integers);
+//            System.out.printf("Index: %02d, Sorted: %s\n", index++, sorted.toString());
         }
+        sorter.printStats();
     }
 
     @Test
@@ -44,8 +45,33 @@ class SortableTest {
         Sortable sorter = new BubbleSort();
         int index = 1;
         for (List<Integer> integers : toSort) {
-            sorter.sort(integers);
-            System.out.printf("Index: %02d, Sorted: %s\n", index++, integers.toString());
+            List<Integer> sorted = sorter.sort(integers);
+//            System.out.printf("Index: %02d, Sorted: %s\n", index++, sorted.toString());
         }
+        sorter.printStats();
+    }
+
+    @Test
+    void testMergeSort() {
+        System.out.println("================ This is MergeSort ================");
+        Sortable sorter = new MergeSort();
+        int index = 1;
+        for (List<Integer> integers : toSort) {
+            List<Integer> sorted = sorter.sort(integers);
+//            System.out.printf("Index: %02d, Sorted: %s\n", index++, sorted.toString());
+        }
+        sorter.printStats();
+    }
+
+    @Test
+    void testQuickSort() {
+        System.out.println("================ This is QuickSort ================");
+        Sortable sorter = new QuickSort();
+        int index = 1;
+        for (List<Integer> integers : toSort) {
+            List<Integer> sorted = sorter.sort(integers);
+            System.out.printf("Index: %02d, Sorted: %s\n", index++, sorted.toString());
+        }
+        sorter.printStats();
     }
 }
